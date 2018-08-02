@@ -1,5 +1,5 @@
 <%@ page language="java" pageEncoding="UTF-8" session="false"%>
-<%@ taglib prefix = "rms" uri = "/WEB-INF/tags/link.tld"%>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -12,7 +12,16 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
   <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-  <rms:link type="stylesheet" href="css/styles.css?v=1.0"/>
+  <link type="stylesheet" href="http://localhost:8081/rms-servlet-web/css/styles.css?v=1.0"/>
+  
+  <script src="https://code.jquery.com/jquery-2.2.4.js"></script>
+  <script>
+      $(function(){
+            $(".save-btn").click(function(){
+                $("#saveForm").submit();
+            });
+      })
+  </script>
 
   <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
@@ -27,19 +36,22 @@
     				<h2 class="mdl-card__title-text">Acme Co.</h2>
     			</div>
     	  	<div class="mdl-card__supporting-text">
-    				<form action="#">
+                    <div>${theMsg}</div>
+    				<form action="form" id="saveForm" method="post">
     					<div class="mdl-textfield mdl-js-textfield">
-    						<input class="mdl-textfield__input" type="text" id="username" />
+                                                <input name="username" class="mdl-textfield__input" type="text" id="username" value="${users.getUserName()}"/>
     						<label class="mdl-textfield__label" for="username">Username</label>
     					</div>
     					<div class="mdl-textfield mdl-js-textfield">
-    						<input class="mdl-textfield__input" type="password" id="userpass" />
+    						<input name="userpass" class="mdl-textfield__input" type="text" id="userpass" value="${users.getPassword()}" />
     						<label class="mdl-textfield__label" for="userpass">Password</label>
     					</div>
+                                        <input name="use_id" class="mdl-textfield__input" type="text" id="userpass" value="${users.getId()}" style="display:none" />
+                                        <input type="submit" value="Save" style="display:none"/>
     				</form>
     			</div>
     			<div class="mdl-card__actions mdl-card--border">
-    				<button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Save</button>
+    				<button class="save-btn mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Save</button>
     			</div>
     		</div>
     	</main>

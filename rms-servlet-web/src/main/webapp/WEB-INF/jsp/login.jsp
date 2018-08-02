@@ -16,6 +16,14 @@
   <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
   <![endif]-->
+  <script src="https://code.jquery.com/jquery-2.2.4.js"></script>
+  <script>
+      $(function(){
+            $(".submit-btn").click(function(){
+                $("#loginForm").submit();
+            });
+      })
+  </script>
 </head>
 
 <body>
@@ -26,19 +34,20 @@
     				<h2 class="mdl-card__title-text">Acme Co.</h2>
     			</div>
     	  	<div class="mdl-card__supporting-text">
-    				<form action="#">
+    				<form id="loginForm" method="post" action="login">
     					<div class="mdl-textfield mdl-js-textfield">
-    						<input class="mdl-textfield__input" type="text" id="username" />
+    						<input name="username" class="mdl-textfield__input" type="text" id="username" />
     						<label class="mdl-textfield__label" for="username">Username</label>
     					</div>
     					<div class="mdl-textfield mdl-js-textfield">
-    						<input class="mdl-textfield__input" type="password" id="userpass" />
+    						<input name="userpass" class="mdl-textfield__input" type="password" id="userpass" />
     						<label class="mdl-textfield__label" for="userpass">Password</label>
     					</div>
+                                    <input id="theSubmit" type="submit" value="login" style="display:none;" />
     				</form>
     			</div>
     			<div class="mdl-card__actions mdl-card--border">
-    				<button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Log in</button>
+    				<button class="submit-btn mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Log in</button>
     			</div>
     		</div>
     	</main>

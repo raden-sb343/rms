@@ -5,6 +5,10 @@ public class User
     private Long id;
     private String userName;
     private String password;
+    
+    public User(){
+        
+    }
 
     public User(Long id, String userName, String password) {
         this.id = id;
